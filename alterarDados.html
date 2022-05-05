@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Contatos</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-icons.css">
+    <script src="js/jquery-3.3.1.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            background: url('img/dark-blue-background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        .custom-file-input~.custom-file-label::after {
+            content: "selecionar";
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <img src="img/icone.svg" alt="Agenda de Contatos" width="30" height="30">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" role="button" id="menuCadastro"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                class="bi-card-list"></i> Cadastro</a>
+                        <div class="dropdown-menu" aria-labelledby="menuCadastro">
+                            <a href="cadastroContato.html" class="dropdown-item"><i class="bi-person-fill"></i> Novo
+                                Contato</a>
+                            <a href="listaContatos.html" class="dropdown-item"><i class="bi-list-ul"></i>Lista de
+                                Contatos</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" role="button" id="menuConta" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false"><i class="bi-gear-fill"></i>Minha Conta</a>
+                        <div class="dropdown-menu" aria-labelledby="menuConta">
+                            <a href="alterarDados.html" class="dropdown-item"><i class="bi-pencil-square"></i> Alterar
+                                dados</a>
+                            <a href="logout.php" class="dropdown-item"><i class="bi-door-open-fill"></i>sair</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-toggle="modal" data-target="#modalSobreAplicacao"><i
+                                class="bi-info-circle"></i>Sobre</a>
+                    </li>
+                </ul>
+                <form action="listaContatos.html" class="form-inline my-2 my-lg-0" method="get">
+                    <input type="search" class="form-control mr-sm-2" name="busca" placeholder="Pesquisar">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Pesquisar</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="h-100 row align-items-center pt-5">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-sm"></div>
+                <div class="col-sm-12">
+                    <div class="card border-primary my-5 ">
+                        <div class="card-header bg-primary text-white">
+                            <h5>Cadastrado de Contato</h5>
+                        </div>
+                        <div class="card-body">
+                            <form action="main.html" method="post">
+                                <h5 class="text-primary">Dados Pessoais</h5>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <div class="form-group">
+                                                    <label for="nomeContato">Nome</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">
+                                                                <i class="bi-person-circle"></i>
+                                                            </div>
+                                                        </div>
+                                                        <input class="form-control" type="text" name="nomeContato"
+                                                            id="nomeContato" placeholder="Digite o Nome" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <div class="form-group">
+                                                    <label for="nascimentoContato">Data de Nascimento</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">
+                                                                <i class="bi-calendar-date"></i>
+                                                            </div>
+                                                        </div>
+                                                        <input class="form-control" type="text" name="nascimentoContato"
+                                                            id="nascimentoContato"
+                                                            placeholder="Digite a data de Nascimento" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <div class="form-group">
+                                                    <label for="sexoContato">Sexo</label>
+                                                    <div class="input-group">
+                                                        <div class="form-check form-check-inline">
+                                                            <input type="radio" class="form-check-input"
+                                                                name="sexoContato" id="sexoMasculino" value="masculino">
+                                                            <label for="sexoMasculino"
+                                                                class="form-check-label">Masculino</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input type="radio" class="form-check-input"
+                                                                name="sexoContato" id="sexoFeminino" value="Feminino">
+                                                            <label for="sexoFeminino"
+                                                                class="form-check-label">Feminino</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <div class="form-group">
+                                                    <label for="mailContato">E-mail</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <div class="input-group-text">
+                                                                <i class="bi-at"></i>
+                                                            </div>
+                                                        </div>
+                                                        <input class="form-control" type="email" name="mailContato"
+                                                            id="mailContato" placeholder="Digite o e-mail" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <div class="row">
+                                                    <div class="col-sm">
+                                                        <div class="form-group">
+                                                            <label for="fotoContato">Foto</label>
+                                                            <div class="input-group">
+                                                                <div class="input-group-prepend">
+                                                                    <div class="input-group-text">
+                                                                        <i class="bi-file-earmark-person"></i>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="custom-file">
+                                                                    <input class="custom-file-input" type="file"
+                                                                        name="fotoContato" id="fotoContato">
+                                                                    <label class="custom-file-label"
+                                                                        for="fotoContato">Escolha a Foto...</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="text-primary">Telefone</h5>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="mail2Usuario">Telefone*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="bi-person-badge"></i></div>
+                                                </div>
+                                                <input id="mail2Usuario" type="e-mail" size="60" class="form-control"
+                                                    name="mail2Usuario" placeholder="(XX) XXXXX-XXXX"
+                                                    value="" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="mail2Usuario">Telefone*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="bi-person-badge"></i></div>
+                                                </div>
+                                                <input id="mail2Usuario" type="e-mail" size="60" class="form-control"
+                                                    name="mail2Usuario" placeholder="(XX) XXXXX-XXXX"
+                                                    value="" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="mail2Usuario">Telefone*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="bi-person-badge"></i></div>
+                                                </div>
+                                                <input id="mail2Usuario" type="e-mail" size="60" class="form-control"
+                                                    name="mail2Usuario" placeholder="(XX) XXXXX-XXXX"
+                                                    value="" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="mail2Usuario">Telefone*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="bi-person-badge"></i></div>
+                                                </div>
+                                                <input id="mail2Usuario" type="e-mail" size="60" class="form-control"
+                                                    name="mail2Usuario" placeholder="(XX) XXXXX-XXXX"
+                                                    value="" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="text-primary">Endereço</h5>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="mail2Usuario">Logadouro*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="bi-map"></i></div>
+                                                </div>
+                                                <input id="mail2Usuario" type="e-mail" size="60" class="form-control"
+                                                    name="mail2Usuario" placeholder="Rua, avenida, setor, travessa, outros ..."
+                                                    value="" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm"><div class="form-group">
+                                        <label for="mail2Usuario">Complemento*</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"><i class="bi-geo-alt"></i></div>
+                                            </div>
+                                            <input id="mail2Usuario" type="e-mail" size="60" class="form-control"
+                                                name="mail2Usuario" placeholder="Numero, quadra, lote, outros ..."
+                                                value="" required>
+                                        </div>
+                                    </div></div>
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="mail2Usuario">Bairro*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="bi-globe2"></i></div>
+                                                </div>
+                                                <input id="mail2Usuario" type="e-mail" size="60" class="form-control"
+                                                    name="mail2Usuario" placeholder="Seu bairro"
+                                                    value="" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><div class="row">
+                                    <div class="col-sm"><div class="form-group">
+                                        <label for="mail2Usuario">Estado*</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text"><i class="bi-globe2"></i></div>
+                                            </div>
+                                            <select id="mail2Usuario" type="e-mail"  class="form-control"
+                                                    name="mail2Usuario" 
+                                                    value="" required><option>Escolha seu estado</option></select>
+                                            
+                                        </div>
+                                    </div></div>
+                                    <div class="col-sm">
+                                        <div class="form-group">
+                                            <label for="mail2Usuario">Cidade*</label>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="bi-globe2"></i></div>
+                                                </div>
+                                                <select id="mail2Usuario" type="e-mail"  class="form-control"
+                                                    name="mail2Usuario" 
+                                                    value="" required><option>Escolha sua cidade</option></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm text-right">
+                                        <button class="btn btn-primary" type="submit">Cadastrar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalSobreAplicacao" tabindex="-1" role="dialog" aria-labelledby="sobreAplicacao"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="sobreAplicacao">Sobre</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="img/logo.jpg" alt="Agenda de Contatos">
+                    <hr>
+                    <p>Agenda de Contatos</p>
+                    <p>version 1.0</p>
+                    <p>Todos os direitos Reservados &copy; 2022</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
